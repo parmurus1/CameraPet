@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.sobre-container .frase-importante {
+  font-size: 1.6rem;
+  color: #58a1ff;
+  text-align: center;
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f9fd;
+  color: #222;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #58a1ff;
+}
+
+header .logo img {
+  width: 50px;
+  max-width: 50px;
+  margin-right: 10px;
+  transform: translateY(1px);
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 55px;
+  font-size: 1.5rem;
+  margin-right: 2.5rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #58a1ff;
+}
+
+/* Conteúdo */
+main.sobre {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.sobre {
+  position: relative;
+  padding-bottom: 200px; /* espaço para a cidade aparecer */
+}
+
+.sobre-container {
+  position: relative;
+  z-index: 2; /* garante que fica sobre a cidade */
+  max-width: 900px;
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.sobre-container h1 {
+  font-size: 2.5rem;
+  color: #58a1ff;
+  margin-bottom: 20px;
+}
+
+.sobre-container p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.cidade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.4s ease, transform 1.4s ease;
+}
+
+body.loaded .cidade {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Footer */
+footer {
+  position: relative;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+  height: 180px; /* altura para comportar a cidade */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+footer p {
+  position: relative;
+  margin-bottom: 15px;
+  font-weight: bold;
+  z-index: 2; /* por cima da cidade */
+}
+
+.sobre-img {
+  display: block;
+  width: 800px; /* ajuste o tamanho conforme quiser */
+  margin: 0 auto 25px auto; /* centraliza e dá espaço abaixo */
+  border-radius: 10px; /* opcional, deixa redonda */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== Animação suave de entrada ===== */
+body {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+body.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sobre-container, .sobre-img, header, footer {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+body.loaded .sobre-container,
+body.loaded .sobre-img,
+body.loaded header,
+body.loaded footer {
+  opacity: 1;
+  transform: translateY(0);
+}
