@@ -114,12 +114,21 @@ h1 {
 .cidade {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 100%;
-  max-width: 1900px;
-  z-index: -1; /* fica atrás do texto */
+  max-width: none;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.4s ease, transform 1.4s ease;
 }
+
+body.loaded .cidade {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* Footer */
 footer {
@@ -148,3 +157,28 @@ footer p {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+/* ===== Animação suave de entrada ===== */
+body {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+body.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sobre-container, .sobre-img, header, footer {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+body.loaded .sobre-container,
+body.loaded .sobre-img,
+body.loaded header,
+body.loaded footer {
+  opacity: 1;
+  transform: translateY(0);
+}
